@@ -3,63 +3,58 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Media Queries</title>
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Poppins:wght@600&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+
+    <title>Media Queries</title>
 </head>
 
 <body>
-    <!--login form section-->
     <main class="container">
-        <div class="info">
-            <h1>
-                Learn to code by <br> watching others.
-            </h1>
-            <p>See how experienced developers solve problems in realtime. </p>
-            <p>Watching scripted tutorials is great but understanding how <br>
-                developers think is invaluable. </p>
-
+        <div class="hero-text">
+            <h1>Learn to code by watching others</h1>
+            <p>See how experienced developers solve problems in real-time. Watching scripted tutorials is great,
+                but understanding how developers think is invaluable.</p>
         </div>
-        <section>
-            <div id="free">
-                <p>Try it free 7 days then $20/mo. thereafter</p>
-            </div>
-            <div class="btn">
-                <form name="myform">
-                    <div class="login" id="error">
-                        <input type="text" class="form_input__error" id="fname" name="fname" required
-                            placeholder="First Name">
-                        <div id="fnameError" class="form_input__error-message"></div>
-                        <input type="text" id="lname" class="form_input__error" name="lname" placeholder="Last Name"
+        <div class="hero-form">
+            <div class="hero-form__price"><small>Try it free 7 days</small> then $20/mo. thereafter</div>
+            <div class="hero-form__container">
+                <form action="#" class="form" novalidate>
+                    <div class="form__input">
+                        <input type="text" placeholder="First Name" class="first-name" aria-label="First name" required>
+                        <small></small>
+                    </div>
+                    <div class="form__input">
+                        <input type="text" placeholder="Last Name" class="last-name" aria-label="Last name" required>
+                        <small></small>
+                    </div>
+                    <div class="form__input">
+                        <input type="email" placeholder="Email Address" class="email" aria-label="Email address"
                             required>
-                        <div id="lnameError" class="form_input__error-message"></div>
-                        <input type="email" id="email" class="form_input__error" name="email" autofocus
-                            placeholder="Email Address" required>
-                        <div id="emailError" class="form_input__error-message"></div>
-                        <input type="password" id="password" class="form_input__error" name="password" autofocus
-                            placeholder="Password" required>
-                        <div id="passwordError" class="form_input__error-message"></div>
+                        <small></small>
                     </div>
-                    <div id="freeTrial">
-                        <input type="submit" value="CLAIM YOUR FREE TRIAL" name="submit">
-
+                    <div class="form__input">
+                        <input type="password" placeholder="Password" class="password" minlength="8"
+                            aria-label="Password" required>
+                        <small></small>
                     </div>
+                    <button type="submit" class="form__submit">Claim your free trial</button>
                 </form>
-                <div id="psw">
-                    <span>By clicking the button, you are agreeing to our <a href="#"> Terms and
-                            services</a></span>
-                </div>
+                <div class="hero-form__consent">By clicking the button, you are agreeing to our <a href="#">Terms and
+                        Services</a></div>
             </div>
-
-        </section>
+        </div>
     </main>
-    <script src="script.js"></script>
+
+
 </body>
 
 </html>

@@ -1,46 +1,73 @@
+const form = document.querySelector('.form');
+const firstName = document.querySelector('.first-name');
+const lastName = document.querySelector('.last-name');
+const email = document.querySelector('.email');
+const password = document.querySelector('.password');
 
-const fname = document.getElementById('fname')
-const lname = document.getElementById('lname')
-const email = document.getElementById('email')
-const password = document.getElementById('password')
-const myform = document.getElementById('')
+// Individual input validations
+const validateFirstName = () => {
+    if (firstName.validity.valueMissing) {
+        diplayError(firstName, 'First Name cannot be empty');
+    } else {
+        diplayError(firstName, '');
+    }
+}
+const validateLastName = () => {
+    if (lastName.validity.valueMissing) {
+        diplayError(lastName, 'Last Name cannot be empty');
+    } else {
+        diplayError(lastName, '');
+    }
+}
+const validateEmail = () => {
+    if (email.validity.valueMissing) {
+        diplayError(email, 'Email cannot be empty');
+    } else if (email.validity.typeMismatch) {
+        diplayError(email, 'Looks like this is not an email');
+    } else {
+        diplayError(email, '');
+    }
+}
+const validatePassword = () => {
+    if(password.validity.tooShort) {
+        diplayError(password, 'Password must be at least 8 characters');
+    }
+    else if (password.validity.valueMissing) {
+        diplayError(password, 'Password cannot be empty');
+    } else {
+        diplayError(password, '');
+    }
+}
 
-form.addEventListener('submit', (e) => {
-  let messages = []
-  if (fname.value === '' || fname.value == null) {
-    messages.push('First Name cannot be empty')
-  }
-  if (lname.value === '' || lname.value == null) {
-    messages.push('Last Name cannot be empty')
-  }
+// Runs all input validations
+const validateAll = () => {
+    validateFirstName();
+    validateLastName();
+    validateEmail();
+    validatePassword();
+}
 
+// Handles diplaying error states
+const diplayError = (input, message) => {
+    const errorMessage = input.nextElementSibling; // Selects the span below each input
+    errorMessage.innerText = message;
+    if (message) {
+        input.classList.add('show-error');
+    } else {
+        input.classList.remove('show-error');
+    }
+}
 
-  if (password.value.length <= 6) {
-    messages.push('Password must be longer than 6 characters')
-  }
+// Listens for text input and runs validations
+firstName.addEventListener("input", validateFirstName);
+lastName.addEventListener("input", validateLastName);
+email.addEventListener("input", validateEmail);
+password.addEventListener("input", validatePassword);
 
-  if (password.value.length >= 20) {
-    messages.push('Password must be less than 20 characters')
-  }
-
-  if (password.value === 'password') {
-    messages.push('Password cannot be password')
-  }
-
-  if (messages.length > 0) {
-    e.preventDefault()
-    errorElement.innerText = messages.join(', ')
-  }
-})
-function validateEmail() {
-         var emailID = document.myform.email.value;
-         atpos = emailID.indexOf("@");
-         dotpos = emailID.lastIndexOf(".");
-         
-         if (atpos < 1 || ( dotpos - atpos < 2 )) {
-            alert("Please enter correct email ID")
-            document.myForm.EMail.focus() ;
-            return false;
-         }
-         return( true );
-      }
+// Runs all validations when form is submitted
+form.addEventListener("submit", e => {
+    if (!form.checkValidity()) {
+        validateAll()
+        e.preventDefault();
+    }
+});
